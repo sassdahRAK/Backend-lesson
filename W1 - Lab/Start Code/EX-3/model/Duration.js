@@ -1,0 +1,67 @@
+
+
+//  TODO - Copy from exercice 1
+/**
+ * Represents a duration of time, stored internally as total seconds.
+ * Immutable: all operations return a new instance.
+ */
+
+//  TODO - You need to export your class to use it
+
+export class Duration {
+  /**
+   * Total duration in seconds.
+   * @type {number}
+   * @private
+   */
+  _totalSeconds;
+
+  /**
+   * Creates a new Duration object.
+   * @param {number} [seconds=0] - The number of seconds.
+   */
+  constructor(seconds = 0) {
+    // Ensure the total seconds is a non-negative integer
+     this._totalSeconds = Math.max(0, Math.floor(seconds))
+  }
+
+  /**
+   * Creates a new Duration from a number of minutes and seconds.
+   * @param {number} [minutes=0] - The number of minutes.
+   * @param {number} [seconds=0] - The number of seconds.
+   * @returns {Duration} A new Duration instance.
+   */
+  static fromMinutesAndSeconds(minutes = 0, seconds = 0) {
+     // YOUR CODE
+     return new Duration(Math.max(0, Math.floor(minutes) * 60 + Math.floor(seconds)));
+  }
+
+  /**
+   * Returns a new Duration by adding another duration.
+   * @param {Duration} other - Another duration to add.
+   * @returns {Duration} A new Duration representing the sum.
+   */
+  plus = (other) => {
+         // YOUR CODE
+         return new Duration(this._totalSeconds + other._totalSeconds);
+  };
+
+  // YOUR COMMENT
+  minus = (other) => {
+         // YOUR CODE
+         return new Duration(Math.max(0, this._totalSeconds - other._totalSeconds));
+  };
+
+  /**
+   * Converts the duration into a human-readable string, e.g., "2m 30s".
+   * @returns {string} The formatted duration string.
+   */
+  toString = () => {
+    // YOUR CODE
+    const m = Math.floor(this._totalSeconds / 60);
+    const s = this._totalSeconds % 60;
+
+    if (m === 0) return `${s}s`;
+    return `${m}m ${s}s`;
+    };
+}
