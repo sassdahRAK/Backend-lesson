@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 04 – S2 PRACTICE: Exercises</title>
+
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="S2%20-%20PRACTICE%20V2_files/atom-one-dark.min.css">
+  <script src="S2%20-%20PRACTICE%20V2_files/highlight.min.js"></script>
+  <script src="S2%20-%20PRACTICE%20V2_files/javascript.min.js"></script>
+  <script src="S2%20-%20PRACTICE%20V2_files/json.min.js"></script>
+  <script src="S2%20-%20PRACTICE%20V2_files/bash.min.js"></script>
+  <script src="S2%20-%20PRACTICE%20V2_files/plaintext.min.js"></script>
+
+  <style>
+    :root {
+      --sidebar-width: 260px;
+      --bg: #f6f7f9;
+      --content-bg: #ffffff;
+      --text: #1f2328;
+      --muted: #57606a;
+      --border: #d0d7de;
+      --accent: #0969da;
+      --accent-soft: #ddf4ff;
+      --code-bg: #282c34;
+      --blockquote-bg: #f0f6ff;
+      --blockquote-border: #0969da;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* === Sidebar ============================================================ */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: #0d1117;
+      color: #c9d1d9;
+      padding: 24px 16px;
+      overflow-y: auto;
+      border-right: 1px solid #1f242c;
+    }
+
+    .sidebar h2 {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8b949e;
+      margin: 0 0 16px 4px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li { margin: 0; }
+
+    .sidebar a {
+      display: block;
+      padding: 8px 12px;
+      color: #c9d1d9;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar a:hover {
+      background: #161b22;
+      color: #ffffff;
+    }
+
+    .sidebar a.active {
+      background: #161b22;
+      color: #58a6ff;
+      border-left-color: #58a6ff;
+      font-weight: 600;
+    }
+
+    .sidebar .num {
+      display: inline-block;
+      width: 28px;
+      color: #6e7681;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sidebar a.active .num { color: #58a6ff; }
+
+    /* === Main content ======================================================= */
+    .content {
+      margin-left: var(--sidebar-width);
+      padding: 48px 56px 96px;
+      max-width: 980px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 0 0 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin: 56px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 24px;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin: 28px 0 12px;
+    }
+
+    h4 {
+      font-size: 16px;
+      margin: 20px 0 8px;
+    }
+
+    p { margin: 10px 0; }
+
+    a { color: var(--accent); }
+
+    strong { color: #1f2328; }
+
+    /* Inline code */
+    code {
+      background: #eef0f3;
+      color: #d1383d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.88em;
+    }
+
+    /* Block code */
+    pre {
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 0;
+      overflow-x: auto;
+      margin: 14px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    pre code {
+      background: transparent;
+      color: #abb2bf;
+      padding: 16px 18px;
+      display: block;
+      font-size: 13.5px;
+      line-height: 1.55;
+      border-radius: 8px;
+    }
+
+    /* Blockquote */
+    blockquote {
+      background: var(--blockquote-bg);
+      border-left: 4px solid var(--blockquote-border);
+      margin: 16px 0;
+      padding: 12px 18px;
+      border-radius: 0 6px 6px 0;
+      color: #1f2328;
+    }
+    blockquote p { margin: 6px 0; }
+    blockquote ul { margin: 6px 0; padding-left: 22px; }
+
+    /* Tables */
+    table {
+      border-collapse: collapse;
+      margin: 16px 0;
+      width: 100%;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f0f3f6;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td { background: #fafbfc; }
+
+    /* Lists */
+    ul, ol { padding-left: 24px; }
+    li { margin: 4px 0; }
+
+    /* Horizontal rule */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    /* Card wrapper for each exercise */
+    .exercise {
+      background: var(--content-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 36px;
+      margin-bottom: 28px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .exercise h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; }
+
+    .intro {
+      background: var(--content-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 32px;
+      margin-bottom: 36px;
+    }
+
+    /* Small screens */
+    @media (max-width: 900px) {
+      :root { --sidebar-width: 200px; }
+      .content { padding: 32px 24px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== LEFT FIXED SIDEBAR ===================== -->
+  <nav class="sidebar" aria-label="Exercise navigation">
+    <h2>Exercises</h2>
+    <ul>
+      <li><a href="#intro" class=""><span class="num">»</span>Overview</a></li>
+      <li><a href="#ex1" class=""><span class="num">01</span>Hello Router</a></li>
+      <li><a href="#ex2" class=""><span class="num">02</span>Multiple Methods</a></li>
+      <li><a href="#ex3" class=""><span class="num">03</span>Route Params</a></li>
+      <li><a href="#ex4" class=""><span class="num">04</span>First Model</a></li>
+      <li><a href="#ex5" class=""><span class="num">05</span>First Controller</a></li>
+      <li><a href="#ex6" class=""><span class="num">06</span>File Logger</a></li>
+      <li><a href="#ex7" class="active"><span class="num">07</span>All Together</a></li>
+      <li><a href="#ex8" class=""><span class="num">08</span>Refactoring</a></li>
+      <li><a href="#ex9" class=""><span class="num">09</span>REST Articles</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="content">
+
+    <h1 id="top">Week 04 – S2 PRACTICE: Exercises</h1>
+
+    <section class="intro" id="intro">
+      <blockquote>
+        <p><strong>Goal:</strong> Warm up with <strong>Express Router</strong> and the
+          <strong>Modular Pattern</strong> (Routes, Models, Controllers, Middleware).</p>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+          <li>All exercises use <strong>ES Modules</strong> (<code>import</code> / <code>export</code>).
+            Make sure your <code>package.json</code> includes:
+<pre><code class="language-json hljs" data-highlighted="yes"><span class="hljs-punctuation">{</span> <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"module"</span> <span class="hljs-punctuation">}</span></code></pre>
+          </li>
+          <li>For each exercise, <strong>create the files</strong> mentioned in the folder structure.</li>
+          <li><strong>Fill in the blank code blocks</strong> (<code>______</code>) with the correct code.</li>
+          <li>Run the server with <code>node server.js</code> (or <code>npx nodemon server.js</code>) and test using
+            <strong>ApiDog</strong>, <strong>Postman</strong> or your browser.</li>
+        </ul>
+      </blockquote>
+    </section>
+
+    <!-- =================== EXERCISE 1 =================== -->
+    <section class="exercise" id="ex1">
+      <h2>Exercise 1 – Hello Express Router</h2>
+      <p><strong>Goal:</strong> Get familiar with <code>express.Router()</code> by creating your first router file.</p>
+
+      <h3>Tasks</h3>
+      <ol>
+        <li>Create the following structure:
+<pre><code class="language-plaintext hljs" data-highlighted="yes">warmup1/
+├── routes/
+│   └── helloRoutes.js
+├── server.js
+└── package.json   ({ "type": "module" })</code></pre>
+        </li>
+        <li>Fill in the blanks in <code>routes/helloRoutes.js</code>:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> ______ <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title function_">______</span>();
+
+<span class="hljs-comment">// GET /hello -&gt; respond with "Hello from Router!"</span>
+router.<span class="hljs-title function_">______</span>(<span class="hljs-string">'/'</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">'______'</span>);
+});
+
+<span class="hljs-keyword">export</span> ______ router;</code></pre>
+        </li>
+        <li>Fill in the blanks in <code>server.js</code>:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">import</span> helloRoutes <span class="hljs-keyword">from</span> <span class="hljs-string">'______'</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+
+<span class="hljs-comment">// Mount the router under the path /hello</span>
+app.<span class="hljs-title function_">______</span>(<span class="hljs-string">'/hello'</span>, ______);
+
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'Server running on port 3000'</span>));</code></pre>
+        </li>
+      </ol>
+      <p><strong>Test:</strong> Open <code>http://localhost:3000/hello</code> → should display <em>Hello from Router!</em></p>
+    </section>
+
+    <!-- =================== EXERCISE 2 =================== -->
+    <section class="exercise" id="ex2">
+      <h2>Exercise 2 – Router with Multiple HTTP Methods</h2>
+      <p><strong>Goal:</strong> Practice defining multiple routes (<code>GET</code>, <code>POST</code>) inside a single router.</p>
+
+      <h3>Tasks</h3>
+      <ol>
+        <li>Create file <code>routes/bookRoutes.js</code>.</li>
+        <li>Fill in the blanks:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">// GET /books -&gt; return list of books</span>
+router.<span class="hljs-title function_">______</span>(<span class="hljs-string">'/'</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>([{ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">'Clean Code'</span> }]);
+});
+
+<span class="hljs-comment">// POST /books -&gt; add a new book (read from request body)</span>
+router.<span class="hljs-title function_">______</span>(<span class="hljs-string">'/'</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> newBook = req.<span class="hljs-property">______</span>;
+  res.<span class="hljs-title function_">status</span>(______).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">message</span>: <span class="hljs-string">'Book created'</span>, <span class="hljs-attr">book</span>: newBook });
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ______;</code></pre>
+        </li>
+        <li>In <code>server.js</code>, register the router under <code>/books</code>:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">import</span> bookRoutes <span class="hljs-keyword">from</span> <span class="hljs-string">'./routes/bookRoutes.js'</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">______</span>());      <span class="hljs-comment">// &lt;-- enable JSON body parsing</span>
+app.<span class="hljs-title function_">use</span>(<span class="hljs-string">'______'</span>, bookRoutes);   <span class="hljs-comment">// &lt;-- mount router</span>
+
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>);</code></pre>
+        </li>
+      </ol>
+      <p><strong>Test in Postman:</strong></p>
+      <ul>
+        <li><code>GET http://localhost:3000/books</code></li>
+        <li><code>POST http://localhost:3000/books</code> with body <code>{ "title": "New Book" }</code></li>
+      </ul>
+    </section>
+
+    <!-- =================== EXERCISE 3 =================== -->
+    <section class="exercise" id="ex3">
+      <h2>Exercise 3 – Router with Dynamic Route Parameters</h2>
+      <p><strong>Goal:</strong> Use <code>:id</code> and <code>req.params</code> inside the router.</p>
+
+      <h3>Tasks</h3>
+      <ol>
+        <li>Create file <code>routes/userRoutes.js</code>.</li>
+        <li>Fill in the blanks:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">// GET /users/:id -&gt; return the user id from the URL</span>
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">'/______'</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> id = req.<span class="hljs-property">______</span>.<span class="hljs-property">id</span>;
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`Requested user with ID: <span class="hljs-subst">${______}</span>`</span>);
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;</code></pre>
+        </li>
+        <li>Mount it in <code>server.js</code>:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> userRoutes <span class="hljs-keyword">from</span> <span class="hljs-string">'./routes/userRoutes.js'</span>;
+
+app.<span class="hljs-title function_">use</span>(<span class="hljs-string">'/______'</span>, userRoutes);</code></pre>
+        </li>
+      </ol>
+      <p><strong>Test:</strong> Visit <code>http://localhost:3000/users/42</code> → should display <em>Requested user with ID: 42</em>.</p>
+    </section>
+
+    <!-- =================== EXERCISE 4 =================== -->
+    <section class="exercise" id="ex4">
+      <h2>Exercise 4 – Create Your First Model (Dummy Data)</h2>
+      <p><strong>Goal:</strong> Separate data from routes by introducing a <strong>Model</strong> layer.</p>
+
+      <h3>Tasks</h3>
+      <ol>
+        <li>Create file <code>models/productModel.js</code>.</li>
+        <li>Fill in the blanks:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-comment">// In-memory dummy data</span>
+<span class="hljs-keyword">const</span> ______ = [
+  { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">'Laptop'</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">1200</span> },
+  { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">'Phone'</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">800</span> },
+];
+
+<span class="hljs-comment">// Function to return all products</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAllProducts</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> ______;
+}
+
+<span class="hljs-comment">// Function to find a product by id</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">findProductById</span>(<span class="hljs-params">id</span>) {
+  <span class="hljs-keyword">return</span> products.<span class="hljs-title function_">______</span>(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> p.<span class="hljs-property">id</span> === id);
+}</code></pre>
+        </li>
+        <li>Create a quick test by importing it in <code>server.js</code>:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> { getAllProducts } <span class="hljs-keyword">from</span> <span class="hljs-string">'./models/______'</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">getAllProducts</span>());</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <!-- =================== EXERCISE 5 =================== -->
+    <section class="exercise" id="ex5">
+      <h2>Exercise 5 – Create Your First Controller</h2>
+      <p><strong>Goal:</strong> Move request-handling logic from the route into a dedicated <strong>Controller</strong>.</p>
+
+      <h3>Tasks</h3>
+      <ol>
+        <li>Create file <code>controllers/productController.js</code>.</li>
+        <li>Fill in the blanks. The controller must import the model from Exercise 4.
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> productModel <span class="hljs-keyword">from</span> <span class="hljs-string">'../models/______'</span>;
+
+<span class="hljs-comment">// Controller for GET /products</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getProducts</span> = (<span class="hljs-params">req, res</span>) =&gt; {
+  <span class="hljs-keyword">const</span> data = productModel.<span class="hljs-title function_">______</span>();
+  res.<span class="hljs-title function_">______</span>(data);
+};
+
+<span class="hljs-comment">// Controller for GET /products/:id</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getProductById</span> = (<span class="hljs-params">req, res</span>) =&gt; {
+  <span class="hljs-keyword">const</span> id = <span class="hljs-title function_">______</span>(req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>);  <span class="hljs-comment">// convert string to number</span>
+  <span class="hljs-keyword">const</span> product = productModel.<span class="hljs-title function_">findProductById</span>(id);
+
+  <span class="hljs-keyword">if</span> (!product) {
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(______).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">message</span>: <span class="hljs-string">'Product not found'</span> });
+  }
+  res.<span class="hljs-title function_">json</span>(______);
+};</code></pre>
+        </li>
+        <li>Create file <code>routes/productRoutes.js</code>:
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> productController <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/______'</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">'/'</span>, productController.<span class="hljs-property">______</span>);
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">'/:id'</span>, productController.<span class="hljs-property">______</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;</code></pre>
+        </li>
+        <li>Mount in <code>server.js</code> under <code>/products</code>.</li>
+      </ol>
+      <p><strong>Test:</strong></p>
+      <ul>
+        <li><code>GET /products</code></li>
+        <li><code>GET /products/1</code></li>
+        <li><code>GET /products/999</code> → should return 404.</li>
+      </ul>
+    </section>
+
+    <!-- =================== EXERCISE 6 =================== -->
+    <section class="exercise" id="ex6">
+      <h2>Exercise 6 – Create Your First Middleware (File Logger)</h2>
+      <p><strong>Goal:</strong> Build a logging middleware that <strong>appends every request to a log file</strong>
+        using the built-in <code>fs</code> module.</p>
+
+      <h3>Tasks</h3>
+      <ol>
+        <li>Create file <code>middleware/logger.js</code>.</li>
+        <li>Fill in the blanks. Each request should append a single line like
+          <code>[2026-05-22T10:32:11.000Z] GET /products\n</code> into <code>logs/access.log</code>.
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> ______ <span class="hljs-keyword">from</span> <span class="hljs-string">'fs'</span>;      <span class="hljs-comment">// import the file-system module</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">logger</span>(<span class="hljs-params">req, res, ______</span>) {
+  <span class="hljs-keyword">const</span> time = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toISOString</span>();
+  <span class="hljs-keyword">const</span> logLine = <span class="hljs-string">`[<span class="hljs-subst">${time}</span>] <span class="hljs-subst">${req.______}</span> <span class="hljs-subst">${req.______}</span>\n`</span>;
+
+  <span class="hljs-comment">// Append the log line to logs/access.log</span>
+  fs.<span class="hljs-title function_">______</span>(<span class="hljs-string">'logs/access.log'</span>, ______, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">'Failed to write log:'</span>, err);
+  });
+
+  <span class="hljs-title function_">______</span>();   <span class="hljs-comment">// pass control to the next middleware/route</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ______;</code></pre>
+        </li>
+        <li>Register it <strong>globally</strong> in <code>server.js</code> (before your routes):
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> logger <span class="hljs-keyword">from</span> <span class="hljs-string">'./middleware/______'</span>;
+
+app.<span class="hljs-title function_">use</span>(______);   <span class="hljs-comment">// &lt;-- apply logger to every request</span></code></pre>
+        </li>
+        <li>Before starting the server, create the folder <code>logs/</code> so the file can be written:
+<pre><code class="language-bash hljs" data-highlighted="yes"><span class="hljs-built_in">mkdir</span> logs</code></pre>
+        </li>
+      </ol>
+      <p><strong>Test:</strong> Make a few requests, then open <code>logs/access.log</code> — you should see lines like:</p>
+<pre><code class="language-plaintext hljs" data-highlighted="yes">[2026-05-22T10:32:11.000Z] GET /products
+[2026-05-22T10:32:14.000Z] POST /products</code></pre>
+    </section>
+
+    <!-- =================== EXERCISE 7 =================== -->
+    <section class="exercise" id="ex7">
+      <h2>Exercise 7 – Putting It All Together (Modular Mini App)</h2>
+      <p><strong>Goal:</strong> Combine <strong>Routes + Controller + Model + Middleware</strong> into one mini modular app.</p>
+
+      <h3>Folder structure to create</h3>
+<pre><code class="language-plaintext hljs" data-highlighted="yes">warmup7/
+├── controllers/
+│   └── taskController.js
+├── middleware/
+│   └── validateTask.js
+├── models/
+│   └── taskModel.js
+├── routes/
+│   └── taskRoutes.js
+├── server.js
+└── package.json   ({ "type": "module" })</code></pre>
+
+      <h3>1. <code>models/taskModel.js</code> — fill in the blanks</h3>
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">const</span> tasks = [{ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">'Learn Express'</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span> }];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getAll</span> = (<span class="hljs-params"></span>) =&gt; ______;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">add</span> = (<span class="hljs-params">task</span>) =&gt; {
+  <span class="hljs-keyword">const</span> newTask = { <span class="hljs-attr">id</span>: tasks.<span class="hljs-property">length</span> + <span class="hljs-number">1</span>, ...task };
+  tasks.<span class="hljs-title function_">______</span>(newTask);
+  <span class="hljs-keyword">return</span> newTask;
+};</code></pre>
+
+      <h3>2. <code>middleware/validateTask.js</code> — fill in the blanks</h3>
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-comment">// Reject the request if the body does not contain a "title" field</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (req, res, next) =&gt; {
+  <span class="hljs-keyword">if</span> (!req.<span class="hljs-property">body</span>.<span class="hljs-property">______</span>) {
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(______).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">message</span>: <span class="hljs-string">'Title is required'</span> });
+  }
+  <span class="hljs-title function_">______</span>();
+};</code></pre>
+
+      <h3>3. <code>controllers/taskController.js</code> — fill in the blanks</h3>
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> taskModel <span class="hljs-keyword">from</span> <span class="hljs-string">'../models/______'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">listTasks</span> = (<span class="hljs-params">req, res</span>) =&gt; {
+  res.<span class="hljs-title function_">json</span>(taskModel.<span class="hljs-title function_">______</span>());
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">createTask</span> = (<span class="hljs-params">req, res</span>) =&gt; {
+  <span class="hljs-keyword">const</span> created = taskModel.<span class="hljs-title function_">add</span>(req.<span class="hljs-property">______</span>);
+  res.<span class="hljs-title function_">status</span>(______).<span class="hljs-title function_">json</span>(created);
+};</code></pre>
+
+      <h3>4. <code>routes/taskRoutes.js</code> — fill in the blanks</h3>
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> taskController <span class="hljs-keyword">from</span> <span class="hljs-string">'../controllers/taskController.js'</span>;
+<span class="hljs-keyword">import</span> validateTask <span class="hljs-keyword">from</span> <span class="hljs-string">'../middleware/______'</span>;
+
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">'/'</span>, taskController.<span class="hljs-property">______</span>);
+
+<span class="hljs-comment">// Apply the validation middleware ONLY on POST /</span>
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">'/'</span>, ______, taskController.<span class="hljs-property">______</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;</code></pre>
+
+      <h3>5. <code>server.js</code> — fill in the blanks</h3>
+<pre><code class="language-javascript hljs" data-highlighted="yes"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">import</span> taskRoutes <span class="hljs-keyword">from</span> <span class="hljs-string">'./routes/______'</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">json</span>());
+
+app.<span class="hljs-title function_">use</span>(<span class="hljs-string">'/______'</span>, taskRoutes);   <span class="hljs-comment">// mount tasks router</span>
+
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'Mini modular app running on :3000'</span>));</code></pre>
+
+      <p><strong>Test in Postman:</strong></p>
+      <ul>
+        <li><code>GET http://localhost:3000/tasks</code> → returns the task list.</li>
+        <li><code>POST http://localhost:3000/tasks</code> with body <code>{ "title": "Practice REST" }</code> → returns the created task.</li>
+        <li><code>POST http://localhost:3000/tasks</code> with body <code>{}</code> → returns <strong>400 Bad Request</strong> thanks to your middleware.</li>
+      </ul>
+    </section>
+
+    <!-- =================== EXERCISE 8 =================== -->
+    <section class="exercise" id="ex8">
+      <h2>EXERCISE 8 – Refactoring</h2>
+
+      <h3>Goals</h3>
+      <ul>
+        <li>ü Understand and apply the separation of concerns principle in Express.js.</li>
+        <li>ü Organize Express.js applications into controllers, routes, models, and middleware.</li>
+        <li>ü Use meaningful folder structures and naming conventions for maintainability.</li>
+      </ul>
+
+      <p>For this exercise you will start with a <strong>START CODE folder (EX-1)</strong>.</p>
+
+      <h3>Context</h3>
+      <p>You are provided with a simple <code>server.js</code> file 
+containing all the logic in one place. Your task is to refactor this 
+file by separating concerns into appropriate directories:</p>
+
+      <h3>Tasks</h3>
+      <ol>
+        <li>Understand the initial code in <code>server.js</code>.</li>
+        <li>Create the following folders:
+          <ul>
+            <li><code>controllers/</code></li>
+            <li><code>routes/</code></li>
+            <li><code>models/</code></li>
+            <li><code>middleware/</code></li>
+          </ul>
+        </li>
+        <li>Refactor the code based on the roles of each part:
+          <ul>
+            <li>Move request logic to <code>controllers/</code></li>
+            <li>Move route definitions to <code>routes/</code></li>
+            <li>Move user data management to <code>models/</code></li>
+            <li>Add a logging middleware to <code>middleware/</code></li>
+          </ul>
+        </li>
+        <li>Ensure the <code>server.js</code> file only contains server setup and middleware registration.</li>
+        <li>Maintain consistent naming and structure as described below.</li>
+      </ol>
+
+      <h3>Folder Structure</h3>
+<pre><code class="language-plaintext hljs" data-highlighted="yes">project/
+├── controllers/
+│   └── userController.js
+├── routes/
+│   └── userRoutes.js
+├── models/
+│   └── userModel.js
+├── middleware/
+│   └── logger.js
+├── server.js
+├── package.json
+└── README.md</code></pre>
+
+      <h3>Folder Structure &amp; Naming Convention</h3>
+      <table>
+        <thead>
+          <tr><th>Element</th><th>Convention</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Controllers</td><td>camelCase.js</td><td>userController.js</td></tr>
+          <tr><td>Routes</td><td>camelCase.js</td><td>userRoutes.js</td></tr>
+          <tr><td>Models</td><td>camelCase.js</td><td>userModel.js</td></tr>
+          <tr><td>Middleware</td><td>camelCase.js</td><td>logger.js</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Bonus Challenge (Optional)</h3>
+      <p>Implement a middleware that validates if the request body contains <code>name</code> and <code>email</code> before it reaches the controller.</p>
+
+      <h3>Reflective Questions</h3>
+      <ol>
+        <li>Why is separating concerns (routes, controllers, models, middleware) important in backend development?</li>
+        <li>What challenges did you face when refactoring the monolithic <code>server.js</code> into multiple files?</li>
+        <li>How does moving business logic into controllers improve the readability and testability of your code?</li>
+        <li>If this project were to grow to support authentication, 
+database integration, and logging, how would this folder structure help 
+manage that growth?</li>
+      </ol>
+    </section>
+
+    <!-- =================== EXERCISE 9 =================== -->
+    <section class="exercise" id="ex9">
+      <h2>EXERCISE 9 – RESTful API for Articles</h2>
+
+      <p>For this exercise you will start with a <strong>START CODE folder (EX-2)</strong>.</p>
+
+      <h3>Goals</h3>
+      <ul>
+        <li>ü Design and implement a RESTful API that follows best practices.</li>
+        <li>ü Perform full CRUD operations (Create, Read, Update, Delete) on an Article resource.</li>
+        <li>ü Apply REST principles such as using appropriate HTTP methods, resource-based routing, and status codes.</li>
+        <li>ü Structure an Express.js project in a modular, maintainable way using models, controllers, and middleware.</li>
+      </ul>
+
+      <h3>Context</h3>
+      <p>You are a backend developer at a news company. The company needs a basic REST API to manage
+        <strong>articles</strong>, <strong>journalists</strong>, and <strong>categories</strong>. Your job is to implement this API using
+        Express.js with dummy JSON data (no database is needed).</p>
+
+      <h3>API Endpoints to Implement</h3>
+      <blockquote>Keep in mind to apply separation of concern (controllers, models, routes).</blockquote>
+
+      <h4>1. Articles Resource</h4>
+      <ul>
+        <li><code>GET /articles</code> — Get all articles</li>
+        <li><code>GET /articles/:id</code> — Get a single article by ID</li>
+        <li><code>POST /articles</code> — Create a new article</li>
+        <li><code>PUT /articles/:id</code> — Update an existing article</li>
+        <li><code>DELETE /articles/:id</code> — Delete an article</li>
+      </ul>
+
+      <h4>2. Journalists Resource</h4>
+      <ul>
+        <li><code>GET /journalists</code> — Get all journalists</li>
+        <li><code>GET /journalists/:id</code> — Get a single journalist</li>
+        <li><code>POST /journalists</code> — Create a new journalist</li>
+        <li><code>PUT /journalists/:id</code> — Update journalist info</li>
+        <li><code>DELETE /journalists/:id</code> — Delete a journalist</li>
+        <li><code>GET /journalists/:id/articles</code> — Article by specific journalist</li>
+      </ul>
+
+      <h4>3. Categories Resource</h4>
+      <ul>
+        <li><code>GET /categories</code> — Get all categories</li>
+        <li><code>GET /categories/:id</code> — Get a single category</li>
+        <li><code>POST /categories</code> — Add a new category</li>
+        <li><code>PUT /categories/:id</code> — Update a category</li>
+        <li><code>DELETE /categories/:id</code> — Delete a category</li>
+        <li><code>GET /categories/:id/articles</code> — Articles from a categories</li>
+      </ul>
+
+      <h3>Reflective Questions</h3>
+      <ol>
+        <li>How do sub-resource routes (e.g., <code>/journalists/:id/articles</code>) improve the organization and clarity of your API?</li>
+        <li>What are the pros and cons of using in-memory dummy data instead of a real database during development?</li>
+        <li>How would you modify the current structure if you needed to 
+add user authentication for journalists to manage only their own 
+articles?</li>
+        <li>What challenges did you face when linking related resources (e.g., matching <code>journalistId</code> in articles), and how did you resolve them?</li>
+        <li>If your API were connected to a front-end application, how 
+would RESTful design help the frontend developer understand how to 
+interact with your API?</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    // Initialize syntax highlighting
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block);
+    });
+
+    // Sidebar active-link tracking based on scroll position
+    const links = Array.from(document.querySelectorAll('.sidebar a'));
+    const sections = links
+      .map(link => {
+        const id = link.getAttribute('href').slice(1);
+        return { link, el: document.getElementById(id) };
+      })
+      .filter(s => s.el);
+
+    function setActive() {
+      const scrollPos = window.scrollY + 120;
+      let current = sections[0];
+      for (const s of sections) {
+        if (s.el.offsetTop <= scrollPos) current = s;
+      }
+      links.forEach(l => l.classList.remove('active'));
+      if (current) current.link.classList.add('active');
+    }
+
+    window.addEventListener('scroll', setActive, { passive: true });
+    window.addEventListener('load', setActive);
+  </script>
+
+
+</body></html>
